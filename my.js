@@ -1,8 +1,4 @@
-use strict;
-
-// let x = +prompt("1 аргумент");
-// let y = +prompt("2 аргумент");
-// let sign = prompt("Операция");
+"use strict";
 
 function calculator(x, y, sign){
     switch (sign) {
@@ -23,6 +19,9 @@ function calculator(x, y, sign){
     }
 }
 
+// let x = +prompt("1 аргумент");
+// let y = +prompt("2 аргумент");
+// let sign = prompt("Операция");
 // calculator(x, y, sign);
 
 
@@ -36,7 +35,7 @@ function search(str,  substring){
         console.log(lastIndex++);
         lastIndex = str.indexOf(substring, lastIndex);
     }
-    console.log("done");
+    console.log("search done");
 }
 
 search(str, substring);
