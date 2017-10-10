@@ -1,10 +1,5 @@
 "use strict";
 
-// "din" => "((("
-// "recede" => "()()()"
-// "Success" => ")())())"
-// "(( @" => "))(("
-
 function convertString(source){
     let result = "";
     [...source.toLowerCase()].forEach(c => {
