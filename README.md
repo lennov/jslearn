@@ -1,2 +1,4 @@
 # jslearn
- JS homework
+ Lesson 1
+ JS homework + extra: done
+ 
