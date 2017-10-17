@@ -17,6 +17,12 @@ export default function convertOperations(operations){
                 [currentItem.date]: {
                         operations: [currentItem],
                         links: [...currentItem.links]
+                        .reduce(function(prev, current){
+                            if(isUniqueLink(prev, current)){
+                                prev.push(current);
+                            }
+                            return prev;
+                        }, [])
                 }
             });
         }
