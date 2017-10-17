@@ -16,7 +16,7 @@ export default function convertOperations(operations){
             return Object.assign({}, prev, {
                 [currentItem.date]: {
                         operations: [currentItem],
-                        links: currentItem.links
+                        links: [...currentItem.links]
                 }
             });
         }
