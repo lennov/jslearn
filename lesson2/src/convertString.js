@@ -1,6 +1,6 @@
 "use strict";
 
-function convertString(source){
+export default function convertString(source){
     let result = "";
     [...source.toLowerCase()].forEach(c => {
         if(source.includes(c, source.indexOf(c) + 1)){
@@ -9,10 +9,5 @@ function convertString(source){
             result += "(";
         }
     });
-    console.log(source, " => ", result);
+    return result;
 }
-
-convertString("din");
-convertString("recede");
-convertString("Success");
-convertString("(( @");
