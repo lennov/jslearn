@@ -25,7 +25,9 @@ export default function convertOperations(operations) {
 }
 
 function isUniqueLink(links, newLink) {
-    return (links.filter(link => (link.name === newLink.name)).length === 0);
+    return (links
+        .filter(link => (link.name === newLink.name))
+        .length === 0);
 }
 
 function addUniqueLinks(links, newLinks) {
