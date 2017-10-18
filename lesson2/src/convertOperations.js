@@ -1,20 +1,20 @@
 "use strict";
 
-export default function convertOperations(operations){
+export default function convertOperations(operations) {
 
-    let process = function(prev, currentItem){
-        if(!prev[currentItem.date]){
+    let process = function(prev, currentItem) {
+        if (!prev[currentItem.date]) {
             prev[currentItem.date] = {
                 operations: [currentItem],
                 links: [...currentItem.links].reduce((prev, current) => {
-                    if(isUniqueLink(prev, current)){
+                    if (isUniqueLink(prev, current)) {
                         prev.push(current);
                     }
                     return prev;
                 }, [])
             };
             return prev;
-        }else{
+        } else {
             prev[currentItem.date].operations.push(currentItem);
             addUniqueLinks(prev[currentItem.date].links, currentItem.links);
             return prev;
@@ -24,13 +24,13 @@ export default function convertOperations(operations){
     return operations.reduce(process, {});
 }
 
-function isUniqueLink(links, newLink){
+function isUniqueLink(links, newLink) {
     return (links.filter(link => (link.name === newLink.name)).length === 0);
 }
 
-function addUniqueLinks(links, newLinks){
+function addUniqueLinks(links, newLinks) {
     newLinks.forEach(link => {
-        if(isUniqueLink(links, link)){
+        if (isUniqueLink(links, link)) {
             links.push(link);
         }
     })
