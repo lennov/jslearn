@@ -2,56 +2,31 @@
 
 export default function convertOperations(operations){
 
-    let initialValue = {};
-
     let process = function(prev, currentItem){
-        let existed = prev[currentItem.date];
-        if(existed != null){
-            existed.operations.push(currentItem);
-            addUniqueLinks(existed.links, currentItem.links);
-            return {
-                [currentItem.date]: existed
+        if(!prev[currentItem.date]){
+            prev[currentItem.date] = {
+                operations: [currentItem],
+                links: [...currentItem.links].reduce((prev, current) => {
+                    if(isUniqueLink(prev, current)){
+                        prev.push(current);
+                    }
+                    return prev;
+                }, [])
             };
+            return prev;
         }else{
-            return Object.assign({}, prev, {
-                [currentItem.date]: {
-                        operations: [currentItem],
-                        links: [...currentItem.links]
-                        .reduce(function(prev, current){
-                            if(isUniqueLink(prev, current)){
-                                prev.push(current);
-                            }
-                            return prev;
-                        }, [])
-                }
-            });
+            prev[currentItem.date].operations.push(currentItem);
+            addUniqueLinks(prev[currentItem.date].links, currentItem.links);
+            return prev;
         }
     };
 
-    return operations.reduce(process, initialValue);
+    return operations.reduce(process, {});
 }
 
-function isUniqueLink(arr, newLink){
-    let result = true;
-    arr.forEach(link => {
-        if(link.name === newLink.name){
-            result = false;
-        }
-    })
-    return result;
+function isUniqueLink(links, newLink){
+    return (links.filter(link => (link.name === newLink.name)).length === 0);
 }
-
-// function isUniqueLink(arr, newLink){
-//
-//     let result = (arr.filter(function(link){
-//         return (link.name === newLink.name);
-//     }).length > 0);
-//     console.log(arr);
-//     console.log(newLink);
-//     console.log("Found: "+result);
-//     //let res = (result.length > 0);
-//     return result;
-// }
 
 function addUniqueLinks(links, newLinks){
     newLinks.forEach(link => {
@@ -60,3 +35,13 @@ function addUniqueLinks(links, newLinks){
         }
     })
 }
+
+// function isUniqueLink(arr, newLink){
+//     let result = true;
+//     arr.forEach(link => {
+//         if(link.name === newLink.name){
+//             result = false;
+//         }
+//     })
+//     return result;
+// }
