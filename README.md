@@ -6,4 +6,4 @@ Lesson 2
 JS homework 2: done
 
 Lesson 3
-JS homework 3: in progress
+JS homework 3: done
