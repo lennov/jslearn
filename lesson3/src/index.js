@@ -1,3 +1,3 @@
-import { sum } from "./homework";
+import homework from "./homework";
 
-console.log(sum(1, 2));
+homework();
