@@ -1,5 +1,5 @@
 export default function sum(arg){
-  let sum = arg;
+  this.sum = arg;
 
   let inner = function(arg){
     if(!arg){
