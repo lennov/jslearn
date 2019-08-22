@@ -7,3 +7,6 @@ JS homework 2: done
 
 Lesson 3
 JS homework 3: done
+
+Lesson 5
+JS Homework 5: done
